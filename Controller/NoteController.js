@@ -25,8 +25,10 @@ const getNotes = async (req, res) => {
 
 // Add the note
 const addNote = async (req, res) => {
+  console.log("add note body check", req.user.id);
   const { title, content } = req.body;
 
+  console.log("Adding note:", title, content);
   try {
     const note = new NoteModel({ title, content, user: req.user.id });
     // await note.save();
@@ -55,6 +57,7 @@ const addNote = async (req, res) => {
         }
       });
     }
+    // return "Note added successfully.";
   } else {
     // If no files are uploaded, just save the note
     await note.save();

@@ -8,6 +8,8 @@ const authRoute = require('./Routes/AuthRoutes');
 
 const notes = require('./Routes/NoteRoutes');
 
+const aiNote = require('./Routes/CommandRoutes');
+
 require('dotenv').config();
 require('./Models/DB');
 
@@ -20,6 +22,8 @@ app.use('/auth', authRoute);
 
 // Notes Route
 app.use('/', notes);
+
+app.use('/ai', aiNote);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
